@@ -8,16 +8,23 @@ CREATE TABLE Faculdade(
     facul_site VARCHAR(500)
 );
 
+INSERT INTO Faculdade(facul_nome, facul_site) VALUES('Fatec Shunji Nishimura', 'https://www.fatecpompeia.edu.br');
+
 CREATE TABLE Usuarios(
 	usu_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usu_nome VARCHAR(300),
     usu_email VARCHAR(300),
     usu_senha VARCHAR(300),
     usu_tel VARCHAR(300),
-    usu_cidade VARCHAR(300),
     facul_id INT,
     FOREIGN KEY (facul_id) REFERENCES Faculdade(facul_id)
 );
+
+ALTER TABLE Usuarios DROP COLUMN usu_cidade;
+
+INSERT INTO Usuarios(usu_nome, usu_email, usu_senha, usu_tel, facul_id) VALUES('Marçal', 'marcal@gmail.com', 'matematica123', '123456789', 1);
+
+SELECT * FROM Usuarios;
 
 CREATE TABLE Produtos(
 	prod_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
