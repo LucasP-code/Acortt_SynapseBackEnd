@@ -23,7 +23,7 @@ const validateEmail = async(req, res, next) => {
     try{
         const {email} = req.body;
         
-        const queryEmail = 'SELECT * FROM (SELECT senha, email, id, idCargo FROM Alunos UNION SELECT senha, email, id, idCargo FROM Facilitador UNION SELECT senha, email, id, idCargo FROM Admins) AS Login_Senha WHERE email = ?';
+        const queryEmail = 'SELECT * FROM (SELECT usu_senha, usu_email, usu_id, idCargo FROM Users UNION SELECT usu_senha, usu_email, usu_id) AS Login_Senha WHERE email = ?';
 
         const [findEmail] = await connection.execute(queryEmail, [email])
         if(findEmail.length == 1) {
