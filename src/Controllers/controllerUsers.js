@@ -6,7 +6,7 @@ const getAll = async(req,res) => {
         const User = await models.getAll();
         return res.status(200).json(User);
     } catch (error) {
-        return res.status(500).json({ status: 7});
+        return res.status(500).json({msg: error.message});
     }
 };
 

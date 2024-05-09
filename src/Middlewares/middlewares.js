@@ -21,18 +21,19 @@ const validatePassword = (req, res,next) => {
 const validateEmail = async(req, res, next) => {
     
     try{
-        const {email} = req.body;
+        const {usu_email} = req.body;
         
-        const queryEmail = 'SELECT * FROM (SELECT usu_senha, usu_email, usu_id, idCargo FROM Users UNION SELECT usu_senha, usu_email, usu_id) AS Login_Senha WHERE email = ?';
+        const queryEmail = 'SELECT * FROM Usuarios WHERE usu_email = ?';
 
-        const [findEmail] = await connection.execute(queryEmail, [email])
-        if(findEmail.length == 1) {
-            return res.status(401).json({msg: "Email ja cadastrado! utilize outro email", status: 13});
+        const [findEmail] = await connection.execute(queryEmail, [usu_email])
+        if(findEmail.length !== 0) {
+            return res.status(401).json({msg: "Email ja cadastrado! utilize outro email"});
         }
 
         next();
     } catch (error) {
-        return res.status(500).json({ status: 10});
+        return res.status(500).json({ status:22 ,msg:error.message});
+        //console.log(msg: error.message);
     }
 };
 

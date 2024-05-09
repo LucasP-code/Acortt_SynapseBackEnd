@@ -10,6 +10,8 @@ CREATE TABLE Faculdade(
 
 INSERT INTO Faculdade(facul_nome, facul_site) VALUES('Fatec Shunji Nishimura', 'https://www.fatecpompeia.edu.br');
 
+SELECT * FROM Faculdade;
+
 CREATE TABLE Usuarios(
 	usu_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usu_nome VARCHAR(300),
