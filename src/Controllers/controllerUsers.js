@@ -39,5 +39,6 @@ const getAllInfoUser = async (req, res) => {
 
 module.exports = {
     getAll,
-    createUser
+    createUser,
+    getAllInfoUser
 };
