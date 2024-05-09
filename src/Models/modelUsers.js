@@ -2,30 +2,30 @@ const connection = require('./connection');
 const bcrypt = require('bcrypt')
 
 class user{
-    constructor(usu_nome , usu_email , usu_senha , usu_tel , faculdade){
+    constructor(usu_nome , usu_email , usu_senha , usu_tel , facul_id){
         this.usu_nome = usu_nome,
         this.usu_email = usu_email,
         this.usu_senha = usu_senha,
         this.usu_tel = usu_tel,
-        this.faculdade = faculdade
+        this.facul_id= facul_id
     }
 };
 
 const createUser = async (infoUser) => {
-    const {usu_nome , usu_email , usu_senha , usu_telefone , faculdade} = infoUser;
-    const query = 'INSERT INTO Usuarios (usu_nome , usu_email , usu_senha , usu_telefone , faculdade) VALUES (?, ?, ?, ?, ?)'
-    const newUser = new User(usu_nome , usu_email , usu_senha , usu_telefone , faculdade)
+    const {usu_nome , usu_email , usu_senha , usu_telefone , facul_id} = infoUser;
+    const query = 'INSERT INTO Usuarios (usu_nome , usu_email , usu_senha , usu_telefone , facul_id) VALUES (?, ?, ?, ?, ?)'
+    const newUser = new User(usu_nome , usu_email , usu_senha , usu_telefone , facul_id)
 
     const salt = await bcrypt.genSalt(12)
     const SenhaHash = await bcrypt.hash(senha,salt)
 
-    const [createdUser] = await connection.execute (query, [newUser.usu_nome , newUser.usu_email , SenhaHash , newUser.Usu_tel , newUser.faculdade])
+    const [createdUser] = await connection.execute (query, [newUser.usu_nome , newUser.usu_email , SenhaHash , newUser.Usu_tel , newUser.facuul_id])
 
     return createUser;
 };
 
 const getAllInfoUser = async (usu_id) =>{
-    const query = 'SELECT usu_nome, usu_email , usu_tel , faculdade FROM Usuarios WHERE id = ?'
+    const query = 'SELECT usu_nome, usu_email , usu_tel , facul_id FROM Usuarios WHERE id = ?'
 
     const [InfoUser] = await connection.execute(query, [usu_id]);
         return InfoUser;    
