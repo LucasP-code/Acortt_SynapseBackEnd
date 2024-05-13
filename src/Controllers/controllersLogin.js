@@ -1,16 +1,27 @@
-const models = require('../Models/modelsLogin');
+const models = require('../Models/modelLogin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const login = async (req,res) => {
     try{
-        const {email,senha} = req.body;
+        console.log('entrou no login');
 
-        const user = await models.login(email, senha);
+            const {email,senha} = req.body;
 
-        const hashSenha = user[0].usu_senha;
+            const user = await models.login(email, senha);
 
-        const senhaCorreta = bcrypt.compare(senha, hashSenha);  
+            const hashSenha = user[0].usu_senha;
+
+            const salt = await bcrypt.genSalt(12);
+            const senhaCripto = await bcrypt.hash(hashSenha,salt);
+            console.log(senhaCripto);
+
+            const senhaCorreta = await bcrypt.compare(senha, hashSenha);  
+
+            console.log(hashSenha);
+            console.log(senha);
+
+            console.log(senhaCorreta);
 
         if (senhaCorreta) {
             const token = jwt.sign(

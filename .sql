@@ -22,7 +22,10 @@ CREATE TABLE Usuarios(
 
 ALTER TABLE Usuarios DROP COLUMN usu_cidade;
 
-INSERT INTO Usuarios(usu_nome, usu_email, usu_senha, usu_tel, facul_id) VALUES('Marçal', 'marcal@gmail.com', 'matematica123', '123456789', 1);
+DELETE FROM Usuarios WHERE usu_id = 1;
+
+
+INSERT INTO Usuarios(usu_nome, usu_email, usu_senha, usu_tel, facul_id) VALUES('Marçal', 'marcal@gmail.com', '$2b$12$ibr4827C8n17LQFOa8Zapeau4HGpeTxs3TxVFv0b.5tvm7uvfBuCW', '123456789', 1);
 
 SELECT * FROM Usuarios;
 
@@ -45,3 +48,5 @@ CREATE TABLE Categoria(
 	cat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	categoria ENUM('Fatec Shunji Nishimura - BDAG', 'Fatec Shunji Nishimura - MAP')
 );
+
+SELECT * FROM Categoria;

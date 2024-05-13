@@ -9,4 +9,19 @@ const validarLogin = async (req, res, error, next) => {
     next();
 };
 
-module.exports = { validarLogin };
+const validarToken = async (req, res, next) => {
+    const token = req.headers['authorization'];
+    if (!token) {
+        return res.status(401).json({msg: 'Token não encontrado'});
+    }
+    try {
+        const decoded = jwt.verify(token, process.env.SECRET);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(401).json({msg: 'Token inválido ou expirado'});
+    }
+
+};
+
+module.exports = { validarLogin, validarToken };
