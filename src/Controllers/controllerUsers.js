@@ -25,8 +25,9 @@ const createUser = async(req, res) => {
 const getAllInfoUser = async (req, res) => {
     try {
 
-        const usu_id = req.body 
-       // const UserData = req.body;
+        const usu_id = req.body.usu_id;
+        console.log(usu_id)
+        //const UserData = req.body;
         //UserData.user.usu_id = usu_id;
     
         const InfoUserList = await models.getAllInfoUser(usu_id);

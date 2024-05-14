@@ -47,6 +47,8 @@ const validarLogin = async (req, res, error, next) => {
     next();
 };
 
+
+
 module.exports = { 
     validarLogin,
     validateEmail,
