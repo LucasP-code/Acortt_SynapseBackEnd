@@ -4,11 +4,14 @@ const bcrypt = require('bcrypt');
 
 const login = async (req,res) => {
     try{
-        console.log('entrou no login');
 
             const {email,senha} = req.body;
 
             const user = await models.login(email, senha);
+
+            if (user == null) {
+                return res.status(400).json({msg: 'Campos email e senha são obrigatórios'});
+            }
 
             const hashSenha = user[0].usu_senha;
 
