@@ -48,7 +48,10 @@ CREATE TABLE Produtos(
 
 CREATE TABLE Categoria(
 	cat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	categoria ENUM('Fatec Shunji Nishimura - BDAG', 'Fatec Shunji Nishimura - MAP')
+	categoria ENUM('Computador', 'Celular')
 );
+
+drop table Produtos;
+drop table Categoria;
 
 SELECT * FROM Categoria;
