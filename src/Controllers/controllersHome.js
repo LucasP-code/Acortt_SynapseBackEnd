@@ -27,10 +27,10 @@ const getAllCell = async(req, res) =>{
     }
 }
 
-const getAllComponetes = async(req, res) =>{
+const getAllComponentes = async(req, res) =>{
     try {
-        const componetes = await models.getAllComponetes();
-        return res.status(200).json(componetes);
+        const componentes = await models.getAllComponentes();
+        return res.status(200).json(componentes);
     } catch (error) {
         return res.status(500).json({msg: error.message});
     }
@@ -49,7 +49,7 @@ module.exports = {
     getAll,
     getAllNotebook,
     getAllCell,
-    getAllComponetes,
+    getAllComponentes,
     getAllAcessorios
 }
 

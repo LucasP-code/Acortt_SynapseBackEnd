@@ -43,7 +43,7 @@ const getAllCell = async (req , res) =>{
     }
 } 
 
-const getAllComponetes = async (req, res) => {
+const getAllComponentes = async (req, res) => {
     try {
         const query = 'SELECT * FROM Produtos WHERE cat_id = 3';
 
@@ -69,6 +69,6 @@ module.exports = {
     getAll,
     getAllNotebook,
     getAllCell,
-    getAllComponetes,
+    getAllComponentes,
     getAllAcessorios    
 }
