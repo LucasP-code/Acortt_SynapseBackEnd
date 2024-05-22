@@ -1,4 +1,4 @@
-const models = require('../models/modelsPod');
+const models = require('../Models/modelsProd');
 
 
 const getAll = async(req,res) => {
@@ -10,9 +10,9 @@ const getAll = async(req,res) => {
     }
 }
 
-const createProd = async(req, res) => {
+const CreateProd = async(req, res) => {
     try {
-        const createProd = await models.criateProd(req.body);
+        const createProd = await models.CreateProd(req.body);
         return res.status(201).json(createProd);
     } catch (error) {
         return res.status(500).json({ status: 4 , error: error.message});
@@ -30,6 +30,6 @@ const getAllinfoprod = async (req, res) => {
 
 module.exports = { 
     getAll,
-    createProd,
+    CreateProd,
     getAllinfoprod
 }

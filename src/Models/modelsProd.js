@@ -1,4 +1,4 @@
-const connection = requireuire('./connection');
+const connection = require("./connection");
 
 class Produtos{
     constructor(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id ,cat_id){   
@@ -17,10 +17,10 @@ class Produtos{
 
 
 
-const criateProd = async (infoProd) => { 
+const CreateProd = async (infoProd) => { 
     const { prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id } = infoProd;
     const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id) VALUES (?,?,?,?,?,?,?,?,?)';
-    const newProd = new Products(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id);
+    const newProd = new Produtos(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id);
 
     const [createProd] = await connection.execute(query, 
         [newProd.prod_nome, 
@@ -56,7 +56,7 @@ const getAllinfoprod = async (usu_id) => {
 };
 
 module.exports = {
-    criateProd,
+    CreateProd,
     getAll,
     getAllinfoprod,
 }
