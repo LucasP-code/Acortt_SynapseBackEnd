@@ -6,6 +6,7 @@ const controller = require('../Controllers/controllersProd');
 
 
 router.get('/prod', controller.getAll);
+router.get('/prod/:id', controller.getAllinfoprod);
 router.post('/prod', controller.createProd);
 
 

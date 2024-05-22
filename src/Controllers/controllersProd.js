@@ -19,9 +19,9 @@ const createProd = async(req, res) => {
     }
 }
 
-const getAllInfoprod = async (req, res) => {
+const getAllinfoprod = async (req, res) => {
     try {
-        const InfoProd = await models.getAllInfoprod();
+        const InfoProd = await models.getAllinfoprod();
         return res.status(200).json(InfoProd);
     } catch (error) {
         return res.status(500).json({msg: error.message});
@@ -31,5 +31,5 @@ const getAllInfoprod = async (req, res) => {
 module.exports = { 
     getAll,
     createProd,
-    getAllInfoprod
+    getAllinfoprod
 }
