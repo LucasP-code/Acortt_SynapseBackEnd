@@ -55,3 +55,12 @@ drop table Produtos;
 drop table Categoria;
 
 SELECT * FROM Categoria;
+
+INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
+VALUES ('Nome do Produto', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 1);
+
+
+INSERT INTO Categoria (categoria) VALUES ('Computador');
+
+
+INSERT INTO Categoria (categoria) VALUES ('Celular');

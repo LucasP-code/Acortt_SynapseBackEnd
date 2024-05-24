@@ -1,55 +1,25 @@
-const models = require('../models/modelsHome');
+const models = require('../Models/modelsHome');
 
-const getAll = async(req,res) => {
+const getAllProducts = async (req, res) => {
     try {
-        const home = await models.getAll();
-        return res.status(200).json(home);
+        const products = await models.getAllProducts();
+        res.json(products);
     } catch (error) {
-        return res.status(500).json({msg: error.message});
+        res.status(500).json({ erro: 'Ocorreu um erro ao buscar os produtos.' });
     }
 }
 
-const getAllNotebook = async(req, res) =>{
+const getProductsByCategory = async (req, res) => {
+    const { cat_id } = req.params;
     try {
-        const notebook = await models.getAllNotebook();
-        return res.status(200).json(notebook);
+        const products = await models.getProductsByCategory(cat_id);
+        res.json(products);
     } catch (error) {
-        return res.status(500).json({msg: error.message});
-    }
-}
-
-const getAllCell = async(req, res) =>{
-    try {
-        const cell = await models.getAllCell();
-        return res.status(200).json(cell);
-    } catch (error) {
-        return res.status(500).json({msg: error.message});
-    }
-}
-
-const getAllComponentes = async(req, res) =>{
-    try {
-        const componentes = await models.getAllComponentes();
-        return res.status(200).json(componentes);
-    } catch (error) {
-        return res.status(500).json({msg: error.message});
-    }
-}
-
-const getAllAcessorios = async(req, res) =>{
-    try {
-        const acessorios = await models.getAllAcessorios();
-        return res.status(200).json(acessorios);
-    } catch (error) {
-        return res.status(500).json({msg: error.message});
+        res.status(500).json({ erro: 'Ocorreu um erro ao buscar os produtos por categoria.' });
     }
 }
 
 module.exports = {
-    getAll,
-    getAllNotebook,
-    getAllCell,
-    getAllComponentes,
-    getAllAcessorios
-}
-
+    getAllProducts,
+    getProductsByCategory
+};

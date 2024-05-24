@@ -1,74 +1,36 @@
-const conetion = require('../conetion');
+const connection = require("./connection");
 
-class Home{
-    constructor(prod_nome, prod_preco,prod_marca,prod_foto,cat_id ){
-        (this.prod_nome = prod_nome),
-        (this.prod_preco = prod_preco),
-        (this.prod_marca = prod_marca),
-        (this.prod_foto = prod_foto),
-        (this.cat_id = cat_id);
+class Product {
+    constructor(nome, preco, marca, foto, cat_id) {
+        this.nome = nome;
+        this.preco = preco;
+        this.marca = marca;
+        this.foto = foto;
+        this.cat_id = cat_id;
     }
 }
 
-const getAll = async () => {
+const getAllProducts = async () => {
     try {
         const query = 'SELECT * FROM Produtos';
-
-        const [prod] = await connection.execute(query);
-        return prod;
+        const [products] = await connection.execute(query);
+        return products;
     } catch (error) {
-        return res.status(500).json({status: 7});
+        throw error;
     }
 }
 
-const getAllNotebook = async (req , res)=> {
+const getProductsByCategory = async (cat_id) => {
     try {
-        const query = 'SELECT * FROM Produtos WHERE cat_id = 1';
-
-        const [prod] = await connection.execute(query);
-        return prod;
+        const query = 'SELECT * FROM Produtos WHERE cat_id = ?';
+        const [products] = await connection.execute(query, [cat_id]);
+        return products;
     } catch (error) {
-        return res.status(500).json({status: 7});
-    }
-}
-
-const getAllCell = async (req , res) =>{
-    try {
-        const query = 'SELECT * FROM Produtos WHERE cat_id = 2';
-
-        const [prod] = await connection.execute(query);
-        return prod;
-    } catch (error) {
-        return res.status(500).json({status: 7});
-    }
-} 
-
-const getAllComponentes = async (req, res) => {
-    try {
-        const query = 'SELECT * FROM Produtos WHERE cat_id = 3';
-
-        const [prod] = await connection.execute(query);
-        return prod;
-    } catch (error) {
-        return res.status(500).json({status: 7});
+        throw error;
     }
 };
 
-const getAllAcessorios = async (req, res) => {
-    try {
-        const query = 'SELECT * FROM Produtos WHERE cat_id = 4';
-
-        const [prod] = await connection.execute(query);
-        return prod;
-    } catch (error) {
-        return res.status(500).json({status: 7});
-    }
-}
-
 module.exports = {
-    getAll,
-    getAllNotebook,
-    getAllCell,
-    getAllComponentes,
-    getAllAcessorios    
-}
+    getAllProducts,
+    getProductsByCategory
+};

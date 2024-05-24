@@ -19,7 +19,7 @@ class Produtos{
 
 const CreateProd = async (infoProd) => { 
     const { prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id } = infoProd;
-    const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id) VALUES (?,?,?,?,?,?,?,?,?)';
+    const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id) VALUES (?,?,?,?,?,?,?,?,?,?)';
     const newProd = new Produtos(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id);
 
     const [createProd] = await connection.execute(query, 
