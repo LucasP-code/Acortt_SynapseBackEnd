@@ -2,7 +2,7 @@ const connection = require("./connection");
 
 const searchProducts = async (searchParams) => {
     try {
-        let query = 'SELECT * FROM Produtos WHERE 2';
+        let query = 'SELECT * FROM Produtos WHERE 1';
         const values = [];
 
         if (searchParams.nome) {
