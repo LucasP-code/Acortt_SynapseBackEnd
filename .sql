@@ -68,3 +68,7 @@ INSERT INTO Categoria (categoria) VALUES ('Celular');
 
 INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
 VALUES ('celular', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 2);
+
+
+INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
+VALUES ('computador', 'aple', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 1);
