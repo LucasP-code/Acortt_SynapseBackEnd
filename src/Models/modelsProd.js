@@ -1,4 +1,5 @@
 const connection = require("./connection");
+const {v4} = require('uuid');
 
 class Produtos{
     constructor(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id ,cat_id){   
@@ -55,8 +56,16 @@ const getAllinfoprod = async (usu_id) => {
     return infoProd;
 };
 
+const getImage = async (prod_id) => {
+    const query = 'SELECT prod_foto FROM Produtos WHERE prod_id = ?';
+
+    const [infoProd] = await connection.execute(query, [prod_id]);
+    return infoProd;
+};
+
 module.exports = {
     CreateProd,
     getAll,
     getAllinfoprod,
+    getImage
 }

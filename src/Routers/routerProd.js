@@ -8,6 +8,7 @@ const controller = require('../Controllers/controllersProd');
 router.get('/prod', controller.getAll);
 router.get('/prod/:id', controller.getAllinfoprod);
 router.post('/prod', controller.CreateProd);
+router.get('/prod/img/:id', controller.getImage);
 
 
 module.exports = router;
