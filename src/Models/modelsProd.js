@@ -49,7 +49,7 @@ const getAll = async () => {
 }
 
 const getAllinfoprod = async (usu_id) => {
-    const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id FROM Produtos WHERE usu_id = ?';
+    const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public, prod_ativo, prod_foto,usu_id,cat_id FROM Produtos WHERE usu_id = ?';
 
     const [infoProd] = await connection.execute(query, [usu_id]);
     return infoProd;

@@ -1,15 +1,5 @@
 const connection = require("./connection");
 
-class Product {
-    constructor(nome, preco, marca, foto, cat_id) {
-        this.nome = nome;
-        this.preco = preco;
-        this.marca = marca;
-        this.foto = foto;
-        this.cat_id = cat_id;
-    }
-}
-
 const getAllProducts = async () => {
     try {
         const query = 'SELECT * FROM Produtos';

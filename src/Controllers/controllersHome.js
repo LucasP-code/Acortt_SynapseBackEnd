@@ -10,7 +10,7 @@ const getAllProducts = async (req, res) => {
 }
 
 const getProductsByCategory = async (req, res) => {
-    const { cat_id } = req.params;
+    const cat_id = req.params.cat_id;
     try {
         const products = await models.getProductsByCategory(cat_id);
         res.json(products);

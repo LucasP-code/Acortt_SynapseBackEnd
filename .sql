@@ -46,6 +46,8 @@ CREATE TABLE Produtos(
     FOREIGN KEY (cat_id) REFERENCES Categoria(cat_id)
 );
 
+SELECT * FROM Produtos;
+
 CREATE TABLE Categoria(
 	cat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	categoria ENUM('Computador', 'Celular')
@@ -57,7 +59,7 @@ drop table Categoria;
 SELECT * FROM Categoria;
 
 INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('Nome do Produto', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 1);
+VALUES ('Nome do Produto', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 1);
 
 
 INSERT INTO Categoria (categoria) VALUES ('Computador');
@@ -67,8 +69,10 @@ INSERT INTO Categoria (categoria) VALUES ('Celular');
 
 
 INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('celular', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 2);
+VALUES ('celular', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 2);
 
 
 INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('computador', 'aple', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 1, 1);
+VALUES ('computador', 'aple', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 1);
+
+SELECT * FROM Produtos WHERE prod_nome = Celular OR prod_marca = Celular;
