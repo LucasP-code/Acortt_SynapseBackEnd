@@ -2,7 +2,7 @@ const connection = require("./connection");
 const {v4} = require('uuid');
 
 class Produtos{
-    constructor(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id ,cat_id){   
+    constructor(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id){   
         (this.prod_nome = prod_nome),
         (this.prod_preco = prod_preco),
         (this.prod_marca = prod_marca),
@@ -10,8 +10,8 @@ class Produtos{
         (this.prod_data_public = prod_data_public),
         (this.prod_ativo = prod_ativo),
         (this.prod_foto = prod_foto),
-        (this.usu_id = usu_id),
-        (this.cat_id = cat_id);
+        (this.prod_categoria = prod_categoria),
+        (this.usu_id = usu_id);
         
     }
 }
@@ -19,9 +19,9 @@ class Produtos{
 
 
 const CreateProd = async (infoProd) => { 
-    const { prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id } = infoProd;
-    const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id) VALUES (?,?,?,?,?,?,?,?,?)';
-    const newProd = new Produtos(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto,usu_id,cat_id);
+    const { prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id} = infoProd;
+    const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id) VALUES (?,?,?,?,?,?,?,?,?)';
+    const newProd = new Produtos(prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id);
 
     const [createProd] = await connection.execute(query, 
         [newProd.prod_nome, 
@@ -31,8 +31,9 @@ const CreateProd = async (infoProd) => {
         newProd.prod_data_public,
         newProd.prod_ativo, 
         newProd.prod_foto,
+        newProd.prod_categoria,
         newProd.usu_id,
-        newProd.cat_id]);
+        ]);
 
         return createProd;
 }
@@ -50,7 +51,7 @@ const getAll = async () => {
 }
 
 const getAllinfoprod = async (usu_id) => {
-    const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public, prod_ativo, prod_foto,usu_id,cat_id FROM Produtos WHERE usu_id = ?';
+    const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public, prod_ativo, prod_foto, prod_categoria,usu_id FROM Produtos WHERE usu_id = ?';
 
     const [infoProd] = await connection.execute(query, [usu_id]);
     return infoProd;

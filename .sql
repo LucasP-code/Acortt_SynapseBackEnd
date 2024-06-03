@@ -40,39 +40,24 @@ CREATE TABLE Produtos(
     prod_data_public DATE,
     prod_ativo BIT,
     prod_foto VARCHAR(300),
+    prod_categoria ENUM('Computador', 'Celular', 'Componentes', 'Acessorios') NOT NULL,
     usu_id INT,
-    cat_id int,
-    FOREIGN KEY (usu_id) REFERENCES Usuarios(usu_id),
-    FOREIGN KEY (cat_id) REFERENCES Categoria(cat_id)
+    FOREIGN KEY (usu_id) REFERENCES Usuarios(usu_id)
 );
 
 SELECT * FROM Produtos;
 
-CREATE TABLE Categoria(
-	cat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	categoria ENUM('Computador', 'Celular')
-);
-
 drop table Produtos;
-drop table Categoria;
-
-SELECT * FROM Categoria;
-
-INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('Nome do Produto', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 1);
 
 
-INSERT INTO Categoria (categoria) VALUES ('Computador');
+INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, prod_categoria)
+VALUES ('Nome do Produto', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 'Acessorios');
+
+INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, prod_categoria)
+VALUES ('celular', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 'Celular');
 
 
-INSERT INTO Categoria (categoria) VALUES ('Celular');
-
-
-INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('celular', 'Marca do Produto', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 2);
-
-
-INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, cat_id)
-VALUES ('computador', 'aple', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 1);
+INSERT INTO Produtos (prod_nome, prod_marca, prod_preco, prod_descricao, prod_data_public, prod_ativo, prod_foto, usu_id, prod_categoria)
+VALUES ('computador', 'aple', 'Preço do Produto', 'Descrição do Produto', '2024-05-24', 1, 'caminho/para/a/foto.jpg', 2, 'Computador');
 
 SELECT * FROM Produtos WHERE prod_nome = Celular OR prod_marca = Celular;

@@ -9,8 +9,9 @@ app.use(cors());
 const routersUsers = require("./Routers/routersUser");
 const routerLogin = require('./Routers/routerLogin');
 const routerProd = require('./Routers/routerProd');
-const routerHome = require('./Routers/routerHome');
 const routerPesquisa = require('./Routers/routerPesquisa');
+const routerHome = require('./Routers/routerHome');
+
 
 app.use(routersUsers);
 app.use(routerLogin);

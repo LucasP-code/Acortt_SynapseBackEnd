@@ -2,7 +2,7 @@ const models = require('../Models/modelPesquisa');
 
 const searchProducts = async (req, res) => {
     try {
-        const { search } = req.body;
+        const search = req.body.search;
         const products = await models.searchProducts(search);
         res.json(products);
     } catch (error) {
