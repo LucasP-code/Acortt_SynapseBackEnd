@@ -16,7 +16,17 @@ const getProdutos = async () => {
     }
 };
 
+const getProdutoByCat = async (Cat) => {
+    try {
+        const query = `SELECT * FROM Produtos WHERE prod_categoria = "${Cat}" ORDER BY RAND() LIMIT 6`;
+        const [produtos] = await connection.execute(query);
+        return produtos;
+    } catch (error) {
+        throw error;
+    }
+};
 
 module.exports = {
-    getProdutos
+    getProdutos,
+    getProdutoByCat
 };
