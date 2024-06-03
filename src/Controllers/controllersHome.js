@@ -1,25 +1,25 @@
 const models = require('../Models/modelsHome');
 
-const getAllProducts = async (req, res) => {
+const getCelulares = async (req, res) => {
     try {
-        const products = await models.getAllProducts();
-        res.json(products);
+        const celulares = await models.getCelulares();
+        return res.status(200).json(celulares);
     } catch (error) {
-        res.status(500).json({ erro: 'Ocorreu um erro ao buscar os produtos.' });
+        return res.status(500).json({msg: error.message});
     }
-}
-
-const getProductsByCategory = async (req, res) => {
-    const cat_id = req.params.cat_id;
-    try {
-        const products = await models.getProductsByCategory(cat_id);
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ erro: 'Ocorreu um erro ao buscar os produtos por categoria.' });
-    }
-}
-
-module.exports = {
-    getAllProducts,
-    getProductsByCategory
 };
+
+
+    const getComputadores = async (req, res) => {
+        try {
+            const computadores = await models.getComputadores();
+            return res.status(200).json(computadores);
+        } catch (error) {
+            return res.status(500).json({msg: error.message});
+        }
+    }
+
+    module.exports = {
+        getCelulares,
+        getComputadores,
+    };

@@ -1,19 +1,21 @@
 const connection = require("./connection");
 
-const getAllProducts = async () => {
+
+
+const getCelulares = async (prod_categoria) => {
     try {
-        const query = 'SELECT * FROM Produtos';
-        const [products] = await connection.execute(query);
+        const query = 'SELECT * FROM Produtos WHERE prod_categoria = "celular" ';
+        const [products] = await connection.execute(query, [prod_categoria]);
         return products;
     } catch (error) {
         throw error;
     }
-}
+};
 
-const getProductsByCategory = async (cat_id) => {
+const getComputadores = async (prod_categoria) => {
     try {
-        const query = 'SELECT * FROM Produtos WHERE cat_id = ?';
-        const [products] = await connection.execute(query, [cat_id]);
+        const query = 'SELECT * FROM Produtos WHERE prod_categoria = "computador" ';
+        const [products] = await connection.execute(query, [prod_categoria]);
         return products;
     } catch (error) {
         throw error;
@@ -21,6 +23,6 @@ const getProductsByCategory = async (cat_id) => {
 };
 
 module.exports = {
-    getAllProducts,
-    getProductsByCategory
+    getCelulares,
+    getComputadores,
 };
