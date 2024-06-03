@@ -1,6 +1,6 @@
 const models = require('../Models/modelsHome');
 
-const getCelulares = async (req, res) => {
+const getCelulares = async (req,res) => {
     try {
         const celulares = await models.getCelulares();
         return res.status(200).json(celulares);
