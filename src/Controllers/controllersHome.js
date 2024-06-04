@@ -19,7 +19,6 @@ const getProdutoByCat = async (req,res) => {
     }
 };
 
-
 module.exports = {
     getProdutos,
     getProdutoByCat

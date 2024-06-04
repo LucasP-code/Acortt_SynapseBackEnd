@@ -2,8 +2,6 @@ const models = require('../Models/modelsProd');
 const {v4} = require('uuid');
 const path = require('path');
 
-
-
 const getAll = async(req,res) => {
     try {
         const prod = await models.getAll();
@@ -33,7 +31,6 @@ const getImage = async (req, res) => {
     const img_path = prod.prod_foto
     const realImgPath = path.join(process.cwd(),img_path)
     return res.status(200).sendFile(realImgPath)
-
 }
 
 const getAllinfoprod = async (req, res) => {

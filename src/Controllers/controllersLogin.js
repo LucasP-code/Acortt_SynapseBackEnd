@@ -4,27 +4,26 @@ const bcrypt = require('bcrypt');
 
 const login = async (req,res) => {
     try{
+        const {email,senha} = req.body;
 
-            const {email,senha} = req.body;
+        const user = await models.login(email, senha);
 
-            const user = await models.login(email, senha);
+        if (user == null) {
+            return res.status(400).json({msg: 'Campos email e senha são obrigatórios'});
+        }
 
-            if (user == null) {
-                return res.status(400).json({msg: 'Campos email e senha são obrigatórios'});
-            }
+        const hashSenha = user[0].usu_senha;
 
-            const hashSenha = user[0].usu_senha;
+        const salt = await bcrypt.genSalt(12);
+        const senhaCripto = await bcrypt.hash(hashSenha,salt);
+        console.log(senhaCripto);
 
-            const salt = await bcrypt.genSalt(12);
-            const senhaCripto = await bcrypt.hash(hashSenha,salt);
-            console.log(senhaCripto);
+        const senhaCorreta = await bcrypt.compare(senha, hashSenha);  
 
-            const senhaCorreta = await bcrypt.compare(senha, hashSenha);  
+        console.log(hashSenha);
+        console.log(senha);
 
-            console.log(hashSenha);
-            console.log(senha);
-
-            console.log(senhaCorreta);
+        console.log(senhaCorreta);
 
         if (senhaCorreta) {
             const token = jwt.sign(
@@ -46,5 +45,5 @@ const login = async (req,res) => {
 }
 
 module.exports = {
-    login,
+    login
 };
