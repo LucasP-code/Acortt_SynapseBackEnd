@@ -45,9 +45,19 @@ const getAllinfoprod = async (req, res) => {
     }
 }
 
+const getAllProdUsu = async (req, res) => {
+    try {
+        const InfoProd = await models.getAllProdUsu(req.params.id);
+        return res.status(200).json(InfoProd);
+    } catch (error) {
+        return res.status(500).json({msg: error.message});
+    }
+}
+
 module.exports = { 
     getAll,
     CreateProd,
     getAllinfoprod,
-    getImage
+    getImage,
+    getAllProdUsu
 }

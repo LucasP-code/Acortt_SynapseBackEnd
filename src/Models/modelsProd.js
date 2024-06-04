@@ -50,10 +50,17 @@ const getAll = async () => {
     }
 }
 
-const getAllinfoprod = async (usu_id) => {
+const getAllProdUsu = async (usu_id) => {
     const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public, prod_ativo, prod_foto, prod_categoria,usu_id FROM Produtos WHERE usu_id = ?';
 
     const [infoProd] = await connection.execute(query, [usu_id]);
+    return infoProd;
+};
+
+const getAllinfoprod = async (prod_id) => {
+    const query = 'SELECT prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public, prod_ativo, prod_foto, prod_categoria,usu_id FROM Produtos WHERE prod_id = ?';
+
+    const [infoProd] = await connection.execute(query, [prod_id]);
     return infoProd;
 };
 
@@ -68,5 +75,6 @@ module.exports = {
     CreateProd,
     getAll,
     getAllinfoprod,
-    getImage
+    getImage,
+    getAllProdUsu
 }
