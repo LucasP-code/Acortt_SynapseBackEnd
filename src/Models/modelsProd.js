@@ -1,3 +1,4 @@
+const environment = require("../enviroment");
 const connection = require("./connection");
 const {v4} = require('uuid');
 
@@ -43,8 +44,12 @@ const getAll = async () => {
     try {
         const query = 'SELECT * FROM Produtos';
 
-        const [prod] = await connection.execute(query);
-        return prod;
+        let [prods] = await connection.execute(query);
+        prods = prods.map((prod) => {
+            prod.prod_foto = `${environment.URL}/prod/img/${prod.prod_id}`;
+            return prod
+        })
+        return prods;
     } catch (error) {
         return res.status(500).json({status: 7});
     }
