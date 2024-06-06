@@ -1,7 +1,7 @@
 const app = require('./app');
 const environment = require('./enviroment');
 
-const PORT = environment.port;
+const {URL,port} = environment;
 
-app.listen(PORT, () => console.log(`Servidor aberto na porta ${PORT}`));
+app.listen(8080, () => console.log(`Servidor aberto em ${URL}`));
 
