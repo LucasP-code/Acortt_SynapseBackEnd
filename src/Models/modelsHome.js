@@ -1,7 +1,5 @@
 const connection = require("./connection");
 
-
-
 const getProdutos = async () => {
     try {
         const queryCelulares = 'SELECT * FROM Produtos WHERE prod_categoria = "celular" ORDER BY RAND() LIMIT 6';

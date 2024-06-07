@@ -17,8 +17,6 @@ class Produtos{
     }
 }
 
-
-
 const CreateProd = async (infoProd) => { 
     const { prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id} = infoProd;
     const query = 'INSERT INTO Produtos (prod_nome, prod_preco, prod_marca, prod_descricao, prod_data_public,prod_ativo, prod_foto, prod_categoria, usu_id) VALUES (?,?,?,?,?,?,?,?,?)';
@@ -38,7 +36,6 @@ const CreateProd = async (infoProd) => {
 
         return createProd;
 }
-
 
 const getAll = async () => {
     try {
